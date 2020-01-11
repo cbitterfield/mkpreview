@@ -14,7 +14,7 @@ VIDEO_EXTENSIONS = ['avi', 'mp4', 'mov', 'mpeg', 'mpg', 'm2p', 'mkv', '3gp', 'og
 
 # TAble Definitions
 TABLE=dict()
-TABLE['preview'] = ['filename','edge_id','dirname','basename','md5','video_width','video_height','video_bit_rate','codec_long_name','video_aspect','video_frame_rate','video_frames','video_size']
+TABLE['preview'] = ['filename','edge_id','dirname','basename','md5','video_width','video_height','video_bit_rate','video_duration','codec_long_name','video_aspect','video_frame_rate','video_frames','video_size']
 
 
 COLORS = list(['AliceBlue',
