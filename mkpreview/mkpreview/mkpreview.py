@@ -28,6 +28,9 @@ from __init__ import __author__
 from definitions import COLORS
 from definitions import VIDEO_EXTENSIONS
 from definitions import TABLE
+import random
+import string
+
 
 
 __prog_name__ = os.path.basename(__file__)
@@ -58,6 +61,13 @@ FFMPEG = "/opt/local/bin/ffmpeg"
 FFPROBE = "/opt/local/bin/ffprobe"
 
 ## Functions
+def randomString(stringLength=10):
+    """Generate a random string of fixed length """
+    letters = string.hexdigits
+    letters = letters.lower()
+    numbers = string.digits
+    return ''.join(random.choice(letters+numbers) for i in range(stringLength))
+
 def md5Checksum(filename):
     with open(filename, 'rb') as fh:
         m = hashlib.md5()
@@ -141,7 +151,7 @@ def video_info(**kwargs):
         local_info['codec_long_name'] = info['streams'][0]['codec_long_name']
         local_info['video_width'] = info['streams'][0]['width']
         local_info['video_height'] = info['streams'][0]['height']
-        local_info['video_aspect'] = info['streams'][0]['display_aspect_ratio']
+        local_info['video_aspect'] = info['streams'][0]['display_aspect_ratio'] if "display_aspect_ratio" in info['streams'][0] else None
         v1,v2 = info['streams'][0]['avg_frame_rate'].split('/')
         local_info['video_frame_rate'] = str(int(int(v1)/int(v2)))
         local_info['video_bit_rate'] = info['streams'][0]['bit_rate']
@@ -169,6 +179,7 @@ def setup(configuration):
     global COLORS
     global TABLE
     global VIDEOS
+    global DRYRUN
     
     # Set Globals if needed
     DEBUG = configuration.debug if configuration.debug else DEBUG
@@ -433,8 +444,12 @@ def main():
         
         if not SUCCESS: return 1
         
-        if CONFIG.md5file: 
+        if CONFIG.md5file and not DRYRUN: 
             md5value = md5Checksum(video)
+            banner_info['md5'] = md5value
+        elif CONFIG.md5file:
+            banner_info['md5'] = "13227ada4af540092b7c5821c9ff321a"
+            md5value = randomString(stringLength=32)
             banner_info['md5'] = md5value
             
         banner_info['filename'] = video
@@ -507,16 +522,22 @@ def main():
         
     
         # Create first image
-        out, err = (
-            ffmpeg
-            .input(video,**input_args)
-            .filter(**filter_select)
-            .filter(**filter_scale)
-            .filter(**filter_tile)
-            .output(output_filename + '.jpg', vframes=1, format='image2', vcodec='mjpeg',threads=1)
-            .overwrite_output()
-            .run(cmd=FFMPEG,capture_stdout=True)
-        )
+        if not DRYRUN:
+            out, err = (
+                ffmpeg
+                .input(video,**input_args)
+                .filter(**filter_select)
+                .filter(**filter_scale)
+                .filter(**filter_tile)
+                .output(output_filename + '.jpg', vframes=1, format='image2', vcodec='mjpeg',threads=1)
+                .overwrite_output()
+                .run(cmd=FFMPEG,capture_stdout=True)
+            )
+        else:
+            with Image() as blank_img:
+                blank_img.blank(2045, 1155, background=CONFIG.tile_bk_color)
+                blank_img.save(filename=output_filename + '.jpg')
+                
         # Get the size of the image 
         with Image(filename=output_filename + '.jpg') as img:
             if DEBUG: print(img.size)
