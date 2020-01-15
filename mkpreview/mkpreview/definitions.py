@@ -6,25 +6,24 @@ Created on Jan 9, 2020
 A list of common definitions
 '''
 
-
-
 ######## Definitions Import as needed  ##########
 
 VIDEO_EXTENSIONS = ['avi', 'mp4', 'mov', 'mpeg', 'mpg', 'm2p', 'mkv', '3gp', 'ogg', 'flv', 'f4v', 'f4p', 'f4a', 'f4b']
 
 # TAble Definitions
-TABLE=dict()
-TABLE['preview'] = ['filename','edge_id','dirname','basename','md5','studio','video_width','video_height','video_bit_rate','video_duration','codec_long_name','video_aspect','video_frame_rate','video_frames','video_size']
-
+TABLE = dict()
+TABLE['preview'] = ['filename', 'edge_id', 'dirname', 'basename', 'md5', 'studio', 'video_width', 'video_height',
+                    'video_bit_rate', 'video_duration', 'codec_long_name', 'video_aspect', 'video_frame_rate',
+                    'video_frames', 'video_size', 'comments']
 
 COLORS = list(['AliceBlue',
-'AntiqueWhite',
-'Aqua',
-'Aquamarine',
-'Azure',
-'Beige',
-'Bisque',
-'Black',
+               'AntiqueWhite',
+               'Aqua',
+               'Aquamarine',
+               'Azure',
+               'Beige',
+               'Bisque',
+               'Black',
 'BlanchedAlmond',
 'Blue',
 'BlueViolet',
