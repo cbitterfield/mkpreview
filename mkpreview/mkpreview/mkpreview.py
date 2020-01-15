@@ -516,7 +516,8 @@ def main():
         input_args = {
                 'loglevel' : '+panic',
                 'hide_banner' : None,
-                'r' : '10'
+                'r' : '10',
+                'hwaccel' : 'videotoolbox'
                 
         }
         
