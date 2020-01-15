@@ -147,7 +147,7 @@ class Database():
                 message += "- File was backed up"
             except IOError as e:
                 message += "- Error file was not backed up {error}".format(error=e)
-                    return False, message
+                return False, message
 
         if overwrite and db_exists:
                 try:

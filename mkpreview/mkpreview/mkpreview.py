@@ -444,7 +444,7 @@ def getCLIparams(cli_args):
     parser.add_argument('-hwaccel',
                         help='Enable Hardware acceleration for videotoolbox or cuda',
                         action='store',
-                        choice=['cuda', 'videotoolbox'],
+                        choices=['cuda', 'videotoolbox'],
                         required=False,
                         dest='hwaccel',
                         default=None
