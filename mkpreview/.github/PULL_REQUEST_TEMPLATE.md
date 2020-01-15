@@ -1,7 +1,7 @@
 # mkpreview Pull Request
 
 ## ➡️ Description
-<Short PR description>
+<Short PR description></Short>
 
 Ticket #: [task-id](task-id-link)
 - [ ] Bug fix (non-breaking change which fixes an issue)
