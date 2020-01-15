@@ -44,13 +44,18 @@ SETUP_REQUIREMENTS = ['pytest-runner==4.2']
 
 setup(
     name=PACKAGE_NAME,
-    version='0.1.1',
+    version='0.1.3',
     author='Colin Bitterfield',
     author_email='cbitterfield@gmail.com',
     description=DESCRIPTION,
     long_description=read('README.rst') + '\n\n' + read('CHANGELOG.rst'),
     keywords='',
     packages=find_packages(include=[PACKAGE_NAME], exclude='tests'),
+    entry_points={
+        'console_scripts': [
+            'mkpreview = mkpreview.mkpreview:main'
+        ]
+    },
     install_requires=REQUIREMENTS,
     tests_require=TEST_REQUIREMENTS,
     include_package_data=True,
@@ -73,11 +78,7 @@ setup(
         'Environment :: Console',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    entry_points={
-        'console_scripts': [
-            'mkpreview=mkpreview.mkpreview:main',
-        ],
-    },
+
     license="MIT license",
-    scripts=['bin/mkpreview.py']
+
 )
