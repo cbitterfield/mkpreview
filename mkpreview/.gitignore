@@ -105,3 +105,6 @@ ENV/
 log.html
 output.xml
 report.html
+
+# OSX Specific
+.DS_Store

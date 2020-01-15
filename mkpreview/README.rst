@@ -16,14 +16,14 @@ mkpreview
 mkpreview contains all the boilerplate you need to create a Python package.
 
 Get Started!
---------
+------------
 Here’s how to set up *mkpreview* for local environment.
 
 1- Clone the *mkpreview* locally:
 
 .. code-block:: console
 
-    $ git clone git@github.com:Studio-51/mkpreview.git
+    $ git clone git@github.com:/mkpreview.git
 
 2- Install your local copy into a *virtualenv*. Assuming you have *virtualenvwrapper* installed, this is how you set up the package for local development:
 

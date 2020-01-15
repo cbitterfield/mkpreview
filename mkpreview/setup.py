@@ -3,7 +3,7 @@
 
 """The setup script."""
 
-__author__ = 'fgriberi'
+__author__ = 'cbitterfield'
 
 import io
 import pip
@@ -44,7 +44,7 @@ SETUP_REQUIREMENTS = ['pytest-runner==4.2']
 
 setup(
     name=PACKAGE_NAME,
-    version='0.1.0',
+    version='0.1.1',
     author='Colin Bitterfield',
     author_email='cbitterfield@gmail.com',
     description=DESCRIPTION,
@@ -56,7 +56,7 @@ setup(
     include_package_data=True,
     setup_requires=SETUP_REQUIREMENTS,
     test_suite='tests',
-    url='git@github.com:Studio-51/mkpreview.git',
+    url='https://github.com/cbitterfield/mkpreview.git',
     zip_safe=False,
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
@@ -79,4 +79,5 @@ setup(
         ],
     },
     license="MIT license",
+    scripts=['bin/mkpreview.py']
 )
