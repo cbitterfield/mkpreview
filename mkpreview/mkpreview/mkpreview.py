@@ -441,7 +441,7 @@ def getCLIparams(cli_args):
                         )
 
     parser.add_argument('-hwaccel',
-                        help='Replace the Studio ID with the EdgeID',
+                        help='Enable Hardware acceleration for videotoolbox or cuda',
                         action='store',
                         choice=['cuda', 'videotoolbox'],
                         required=False,
