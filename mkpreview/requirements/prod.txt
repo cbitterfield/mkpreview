@@ -3,7 +3,7 @@ pip
 definitions
 database
 ffmpeg
-pillow==6.2.1
+pillow==9.0.0
 wand==0.5.7
 ffmpeg-python==0.2.0
 twine==1.13.0
